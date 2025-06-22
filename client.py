@@ -18,7 +18,10 @@ def pretty_print(step_nr):
 
 def open_tls_socket():
     context = ssl.create_default_context()
- 
+
+    context.check_hostname = False
+    context.verify_mode = ssl.CERT_NONE
+
     ## certificate workaround
     context.load_verify_locations("ca.pem")
 
